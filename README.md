@@ -221,14 +221,14 @@ Output:
 
     Starting epoch 1
     Processing batch 1
-    Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
+    Outputs shape: torch.Size([100, 5]), Labels shape: torch.Size([100])
     Outputs dtype: torch.float32, Labels dtype: torch.int64
-    Loss: 1.3344042301177979
-  
+    Loss: 1.735997200012207
+
     Processing batch 2
-    Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
+    Outputs shape: torch.Size([100, 5]), Labels shape: torch.Size([100])
     Outputs dtype: torch.float32, Labels dtype: torch.int64
-    Loss: 1.2283859252929688
+    Loss: 1.7038110494613647
   
     ...
   
