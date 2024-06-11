@@ -10,9 +10,35 @@ Natural Language Processing requires the neurons to learn from their predescesso
 
 LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its composition. LSTM is designed to overcome the limitations of traditional RNNs in learning and remembering long-range dependencies in sequential data. Each LSTM unit consists of the forget gate, the input gate, and the output gate. The forget gate determines which information from the previous state should be disregarded, the input gate decides which new information should be added to the current cell state, and the output gate determines what information from the current cell state should be outputted. The entire LSTM network is consisted of multiple LSTM units, allowing each unit to learn from its predecessor and improving the accuracy of the output. LSTM is a great fit for analyzing time-series or sequential datasets, commonly applied for Natural Language Processings. In this project, we will be applying LSTM as a basis model architecture to predict the sentiment of given input texts.
 
-## Initial Model Setup
-### Data Preprocessing
+## Learning Environment
+### AWS SageMaker
+    Instance: ml.t3.2xlarge
+    Storage: 100 GB
+    Image: SageMaker Distribution 1.8
+    Lifecycle Configuration: None
 
+## Dependency, Data & Model Initialization
+### Import Dependency
+    import torch
+    import torch.nn as nn
+    import pandas as pd
+    import numpy as np
+
+    import nltk
+    from nltk.tokenize import word_tokenize
+    from nltk.corpus import stopwords
+
+    import torchvision.transforms as transforms
+    from torchvision.datasets import CIFAR10
+    from torch.utils.data import DataLoader, Dataset
+
+    from collections import Counter
+
+    import re
+
+### Download "punkt" and "stopwords"
+    nltk.download("punkt")
+    nltk.download("stopwords")
 
 Output:
 
