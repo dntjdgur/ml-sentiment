@@ -17,8 +17,18 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
     Image: SageMaker Distribution 1.8
     Lifecycle Configuration: None
 
-    
-Output:
+## Initial Model Training Approach
+### Hyperparameters
+Batch Size: 100
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.001
+
+### Output:
 
     Starting epoch 1
     Processing batch 1
@@ -33,26 +43,69 @@ Output:
   
     ...
   
-    Processing batch 709
+    Processing batch 85
     Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
     Outputs dtype: torch.float32, Labels dtype: torch.int64
     Loss: 1.2020289897918701
   
-    Processing batch 710
+    Processing batch 86
     Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
     Outputs dtype: torch.float32, Labels dtype: torch.int64
     Loss: 1.2219252586364746
 
-At this point, another epoch training session was not made and the kernel was immediately interrupted since the loss was not improved.
+### Result Interpretations & Adjustments
+Initially created model was producing poor results. Loss was too high, and further training after the first 5 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
+One of the most common way to lower the traning loss is to lower the learning rate, achieving the following model adjustments:
+- Convergence Stability: As training progresses, the model parameters should ideally converge to a set of values that minimize the loss function. A high learning rate can cause the optimizer to overshoot the optimal values, leading to oscillations or even divergence. Lowering the learning rate helps in fine-tuning the parameters, ensuring more stable convergence.
+- Escape Local Minima: In the initial stages of training, a higher learning rate can help in escaping local minima (suboptimal points) and exploring the parameter space more effectively. As training progresses, lowering the learning rate can help in settling into a global or better local minimum.
+- Learning Rate Scheduling: Often, a learning rate schedule is used, which gradually decreases the learning rate over time. Techniques like step decay, exponential decay, or adaptive learning rate methods (like ReduceLROnPlateau) are employed to adjust the learning rate as training progresses.
+
+## Tuned Model Training Approach
+### Hyperparameters
+Batch Size: 50
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.0001
+
+### Output:
+
+    Starting epoch 1
+    
+### Result Interpretations & Adjustments
+It was surprising to see how the model accuracy and loss got worse than before. The model outputs directly contradicted to the common practices of improving the model by lowering the learning rate. Although uncommon, such was likely due to the following reasons:
+
+1. Stuck in Local Minima or Plateaus
+If the training process gets stuck in a local minimum or a plateau (a region where the loss function has very small gradients), increasing the learning rate can help the optimizer to escape these regions. This can allow the model to explore more of the parameter space and potentially find a better path to the global minimum.
+
+2. Adaptive Learning Rate Methods
+Some adaptive learning rate algorithms, such as Adam, RMSprop, and Adagrad, adjust the learning rate based on the magnitude of the gradients. In these methods, the effective learning rate can increase in some dimensions while decreasing in others. These adjustments can help improve convergence speed and performance.
+
+3. Cyclic Learning Rates
+Cyclic learning rate schedules, such as the one used in Cyclical Learning Rates (CLR) and the One Cycle Policy, involve periodically increasing and then decreasing the learning rate. This technique can sometimes lead to improved performance and faster convergence. The idea is to allow the learning rate to oscillate between a lower and an upper bound, encouraging the optimizer to escape local minima and explore different regions of the loss landscape.
+
+4. Learning Rate Warm-up
+In some training regimes, particularly with very deep neural networks or transformers, it's beneficial to start with a very low learning rate and gradually increase it (warm-up) for the initial few epochs. This helps in stabilizing the training process early on. After the warm-up phase, the learning rate is usually lowered gradually.
+
+New strategy to improve the model's accuracy was to increase the learning rate instead, and involving some dropouts and additional layers to the model. Multiples of training sessions were conducted alongside of tweaking the model architecture, and the following was achieved.
+
+## Fine-tuned Model Training Approach
+### Hyperparameters
+Batch Size: 50
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.01
+
+### Output:
+    Starting epoch 1
 
 
 
 
-
-
-
-
-
-
-  
-  
