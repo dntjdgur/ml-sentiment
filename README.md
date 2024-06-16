@@ -55,7 +55,8 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
 ![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_val_test_loss.png)
 
 ### Result Interpretations & Adjustments
-Initially created model was producing poor results. Loss was too high, and further training after 7 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
+Initial model output indicated a good start in the analysis. Loss was somewhere in between 0.2 to 0.4 range, and gradually decreased over several epochs in the training.
+But the model was not producing similar stability in the validation and test stages. As the plot indicates, the loss value massively fluctuated between maximum 2.5 to minimum 0.5. A new strategy to lower the loss needs to be taken as the next step in the tuning process.
 One of the most common way to lower the traning loss is to lower the learning rate, achieving the following model adjustments:
 - Convergence Stability: As training progresses, the model parameters should ideally converge to a set of values that minimize the loss function. A high learning rate can cause the optimizer to overshoot the optimal values, leading to oscillations or even divergence. Lowering the learning rate helps in fine-tuning the parameters, ensuring more stable convergence.
 - Escape Local Minima: In the initial stages of training, a higher learning rate can help in escaping local minima (suboptimal points) and exploring the parameter space more effectively. As training progresses, lowering the learning rate can help in settling into a global or better local minimum.
@@ -113,7 +114,7 @@ Learning Rate: 0.01
     Starting epoch 1
 
 ### Training Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
+![Test & Validation Loss Plot]
 
 ### Test & Validation Output
 
@@ -121,4 +122,4 @@ Learning Rate: 0.01
     Test Loss: 1.6079, Test Accuracy: 0.5826
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_test_val_loss.png)
+![Test & Validation Loss Plot]
