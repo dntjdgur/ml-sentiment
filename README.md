@@ -19,14 +19,14 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
 
 ## Initial Model Training Approach
 ### Hyperparameters
-Batch Size: 100
-Input Dimension: 128
-Output Dimension: 5
-Training Size: 75%
+    Batch Size: 100
+    Input Dimension: 128
+    Output Dimension: 5
+    Training Size: 75%
 
 ### Optimizer Parameter
-Optimizer: Adam
-Learning Rate: 0.001
+    Optimizer: Adam
+    Learning Rate: 0.001
 
 ### Training Output
 
@@ -62,14 +62,14 @@ One of the most common way to lower the traning loss is to lower the learning ra
 
 ## Tuned Model Training Approach
 ### Hyperparameters
-Batch Size: 50
-Input Dimension: 128
-Output Dimension: 5
-Training Size: 75%
+    Batch Size: 50
+    Input Dimension: 128
+    Output Dimension: 5
+    Training Size: 75%
 
 ### Optimizer Parameter
-Optimizer: Adam
-Learning Rate: 0.0001
+    Optimizer: Adam
+    Learning Rate: 0.0001
 
 ### Training Output
 
