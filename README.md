@@ -19,7 +19,7 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
 
 ## Initial Model Training Approach
 ### Hyperparameters
-    Batch Size: 100
+    Batch Size: 150
     Input Dimension: 128
     Output Dimension: 5
     Training Size: 75%
@@ -31,27 +31,13 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
 ### Training Output
 
     Starting epoch 1
-    Processing batch 1
-    Outputs shape: torch.Size([100, 5]), Labels shape: torch.Size([100])
-    Outputs dtype: torch.float32, Labels dtype: torch.int64
-    Loss: 1.735997200012207
-
-    Processing batch 2
-    Outputs shape: torch.Size([100, 5]), Labels shape: torch.Size([100])
-    Outputs dtype: torch.float32, Labels dtype: torch.int64
-    Loss: 1.7038110494613647
-  
+    Batch: 1 Loss: 1.666138768196106
+    Batch: 2 Loss: 1.7109413146972656
+    Batch: 3 Loss: 1.6612130403518677
+    Batch: 4 Loss: 1.6497366428375244
+    Batch: 5 Loss: 1.7631101608276367
     ...
-  
-    Processing batch 85
-    Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
-    Outputs dtype: torch.float32, Labels dtype: torch.int64
-    Loss: 1.2020289897918701
-  
-    Processing batch 86
-    Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
-    Outputs dtype: torch.float32, Labels dtype: torch.int64
-    Loss: 1.2219252586364746
+    
 
 ### Result Interpretations & Adjustments
 Initially created model was producing poor results. Loss was too high, and further training after 7 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
