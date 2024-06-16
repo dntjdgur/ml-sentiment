@@ -17,207 +17,18 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
     Image: SageMaker Distribution 1.8
     Lifecycle Configuration: None
 
-## Dependency, Data & Model Initialization
-### Dependency Initialization and module downloads
-    # Pytorch
-    import torch
-    import torch.nn as nn
-    import pandas as pd
-    import numpy as np
+## Initial Model Training Approach
+### Hyperparameters
+Batch Size: 100
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
 
-    # NLTK
-    import nltk
-    from nltk.tokenize import word_tokenize
-    from nltk.corpus import stopwords
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.001
 
-    # Torchvision
-    import torchvision.transforms as transforms
-    from torchvision.datasets import CIFAR10
-    from torch.utils.data import DataLoader, Dataset
-
-    # Collections
-    from collections import Counter
-
-    # Regex
-    import re
-
-    # AWS Wrangler
-    import awswrangler as wr
-
-    nltk.download("punkt")
-    nltk.download("stopwords")
-
-### Data Initialization and Preprocessing
-    # Create torch seed for reproducibility and fair comparisons
-    torch.manual_seeds(10)
-
-    # Initialize a word counter
-    word_counter = Counter()
-
-    # Read in the data from the file directory, or cloud storage.
-    file_directory = "c:/User/alex/downloads/Reviews.csv" # <- If the data is in the downloads folder.
-    df = pd.read_csv(file_directory)
-
-    s3_storage = "s3://foo-bar"
-    df = wr.s3.read_csv(s3_storage) ## <- If the data is in the s3 storage. Make sure that you add an appropriate IAM role for SageMaker to read in the data from your s3 bucket.
-
-    df = df[:int(len(df)/10)] ## Limit the rows down to 1/10 of the entire dataset to avoid training overheads. Total of 56845 rows.
-
-    # Text cleaning method
-    def text_cleaning(text):
-        # Convert the words in lowercase.
-        text = text.lower()
-        # Remove punctuations and special characters.
-        text = re.sub(r"[^a-zA-Z\s]", "", text)
-
-        return text
-
-    # Stop word cleaning method
-    def stopword_cleaning(text):
-        # Clean the text.
-        cleaned_text = text_cleaning(text)
-        # Tokenize the cleaned text.
-        tokens = word_tokenize(cleaned_text)
-        # Remove any stopwords.
-        stop_words = set(stopwords.words("english"))
-        filtered_tokens = [token for token in tokens if token not in stop_words]
-
-        return filtered_tokens
-
-    # Remove NaN values.
-    df["Text"] = df["Text"].fillna("")
-    # Ensure all values in "Text" are strings.
-    df["Text"] = df["Text"].astype(str)
-    # Clean the words and remove any stop words.
-    df["tokenize"] = df["Text"].apply(lambda x: stopword_cleaning(x))
-
-    # Indexing and Numericalization
-    word_counter = Counter()
-    for tokens in df["tokenized"]:
-        word_counter.update(tokens)
-
-    vocab = {word: idx + 2 for idx, (word, _) in enumerate(word_counter.most_common())}
-    vocab["<PAD>"] = 0  # Padding token
-    vocab["<UNK>"] = 1  # Unknown token
-
-    df["numericalized"] = df["tokenized"].apply(lambda x: [vocab.get(token, vocab["<UNK>"]) for token in x])
-
-    # Padding
-    max_len = max(map(len, df["numericalized"]))
-    df["padded"] = df["numericalized"].apply(lambda x: x + [vocab["<PAD>"]] * (max_len - len(x)))
-
-    df["Score"] = df["Score"] - 1
-    X = torch.tensor(df["padded"].tolist())
-    y = torch.tensor(df["Score"].tolist())
-
-### Data Loader & Model Architecture
-    # Custom Data Loader
-    class CustomDataset(Dataset):
-    def __init__(self, X, y):
-        super(CustomDataset, self).__init__()
-        self.X = X
-        self.y = y
-
-    def __len__(self):
-        return len(self.X)
-
-    def __getitem__(self, index):
-        return self.X[index], self.y[index]    
-
-    # Model
-    class Model(nn.Module):
-        def __init__(self, vocab_size, embedding_dim, hidden_dim, output_dim, bidirectional = True, num_layers = 2, dropout = 0.2):
-            super(Model, self).__init__();
-            self.embedding = nn.Embedding(vocab_size, embedding_dim)
-            self.bidirectional = bidirectional
-            self.hidden_dim = hidden_dim
-            self.lstm = nn.LSTM(embedding_dim, hidden_dim, num_layers, batch_first=True, bidirectional=bidirectional)
-            self.dropout = nn.Dropout(dropout)
-            self.batch_norm = nn.BatchNorm1d(hidden_dim * 2 if bidirectional else hidden_dim)
-            self.fc1 = nn.Linear(hidden_dim * 2 if bidirectional else hidden_dim, hidden_dim)
-            self.fc2 = nn.Linear(hidden_dim, output_dim)
-
-        def forward(self, x):
-            embedded = self.embedding(x)
-            lstm_out, _ = self.lstm(embedded)
-        
-            # Concatenate the outputs from both directions if bidirectional
-            if self.bidirectional:
-                lstm_out = torch.cat((lstm_out[:, -1, :self.hidden_dim], lstm_out[:, 0, self.hidden_dim:]), dim=1)
-            else:
-                lstm_out = lstm_out[:, -1, :]
-        
-            lstm_out = self.dropout(lstm_out)
-            lstm_out = self.batch_norm(lstm_out)
-            out = self.fc1(lstm_out)
-            out = self.dropout(out)
-            out = self.fc2(out)
-        
-            return out;
-
-    dataset = CustomDataset(X, y)
-    n = len(dataset)
-
-    batch_size = 100;
-    train_size = int(0.75 * n); # Setting 75% of dataset for training dataset
-    validation_size = int(0.15 * n); # 15% of all remaining 25% for validation dataset
-    test_size = n - train_size - validation_size; # 10% of remaining for test dataset
-
-    train_dataset, val_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, validation_size, test_size])
-
-    # Create DataLoader for each train, validation, and test datasets.
-    train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4);
-    validation_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-    test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-
-    # Defining hyperparameters
-    vocab_size = len(vocab);
-    embedding_dim = 100;
-    hidden_dim = 128;
-    output_dim = 5;
-
-    model = Model(vocab_size, embedding_dim, hidden_dim, output_dim);
-
-    criterion = nn.CrossEntropyLoss();
-    optimizer = torch.optim.RMSprop(model.parameters(), lr=0.0001);
-
-    num_epochs = 10;
-
-    for epoch in range(num_epochs):
-        print(f'Starting epoch {epoch+1}')
-        model.train()  # Train the model
-        total_loss = 0  # Initialize the Loss to 0
-
-        for batch_idx, (inputs, labels) in enumerate(train_dataloader):
-            print(f'Processing batch {batch_idx+1}')
-            optimizer.zero_grad()  # Clearing out the Gradient Descent
-
-            # Forward pass
-            inputs = inputs.to(torch.int64)
-            labels = labels.to(torch.int64)
-            outputs = model(inputs)
-
-            # Debugging shapes and types
-            print(f'Outputs shape: {outputs.shape}, Labels shape: {labels.shape}')
-            print(f'Outputs dtype: {outputs.dtype}, Labels dtype: {labels.dtype}')
-
-            # Calculate the loss
-            try:
-                loss = criterion(outputs, labels)
-                print(f'Loss: {loss.item()}')
-                # Backward pass and optimization
-                loss.backward()
-                optimizer.step()
-            except Exception as e:
-                print(f'Error in loss calculation: {e}')
-                break  # Exit the loop if there's an error in loss calculation
-
-            total_loss += loss.item();
-
-        # Print average loss for each epoch
-        print(f'Epoch {epoch+1}/{num_epochs}, Loss: {total_loss/len(train_dataloader)}');
-    
-Output:
+### Output:
 
     Starting epoch 1
     Processing batch 1
@@ -232,26 +43,69 @@ Output:
   
     ...
   
-    Processing batch 709
+    Processing batch 85
     Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
     Outputs dtype: torch.float32, Labels dtype: torch.int64
     Loss: 1.2020289897918701
   
-    Processing batch 710
+    Processing batch 86
     Outputs shape: torch.Size([40, 5]), Labels shape: torch.Size([40])
     Outputs dtype: torch.float32, Labels dtype: torch.int64
     Loss: 1.2219252586364746
 
-At this point, another epoch training session was not made and the kernel was immediately interrupted since the loss was not improved.
+### Result Interpretations & Adjustments
+Initially created model was producing poor results. Loss was too high, and further training after the first 5 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
+One of the most common way to lower the traning loss is to lower the learning rate, achieving the following model adjustments:
+- Convergence Stability: As training progresses, the model parameters should ideally converge to a set of values that minimize the loss function. A high learning rate can cause the optimizer to overshoot the optimal values, leading to oscillations or even divergence. Lowering the learning rate helps in fine-tuning the parameters, ensuring more stable convergence.
+- Escape Local Minima: In the initial stages of training, a higher learning rate can help in escaping local minima (suboptimal points) and exploring the parameter space more effectively. As training progresses, lowering the learning rate can help in settling into a global or better local minimum.
+- Learning Rate Scheduling: Often, a learning rate schedule is used, which gradually decreases the learning rate over time. Techniques like step decay, exponential decay, or adaptive learning rate methods (like ReduceLROnPlateau) are employed to adjust the learning rate as training progresses.
+
+## Tuned Model Training Approach
+### Hyperparameters
+Batch Size: 50
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.0001
+
+### Output:
+
+    Starting epoch 1
+    
+### Result Interpretations & Adjustments
+It was surprising to see how the model accuracy and loss got worse than before. The model outputs directly contradicted to the common practices of improving the model by lowering the learning rate. Although uncommon, such was likely due to the following reasons:
+
+1. Stuck in Local Minima or Plateaus
+If the training process gets stuck in a local minimum or a plateau (a region where the loss function has very small gradients), increasing the learning rate can help the optimizer to escape these regions. This can allow the model to explore more of the parameter space and potentially find a better path to the global minimum.
+
+2. Adaptive Learning Rate Methods
+Some adaptive learning rate algorithms, such as Adam, RMSprop, and Adagrad, adjust the learning rate based on the magnitude of the gradients. In these methods, the effective learning rate can increase in some dimensions while decreasing in others. These adjustments can help improve convergence speed and performance.
+
+3. Cyclic Learning Rates
+Cyclic learning rate schedules, such as the one used in Cyclical Learning Rates (CLR) and the One Cycle Policy, involve periodically increasing and then decreasing the learning rate. This technique can sometimes lead to improved performance and faster convergence. The idea is to allow the learning rate to oscillate between a lower and an upper bound, encouraging the optimizer to escape local minima and explore different regions of the loss landscape.
+
+4. Learning Rate Warm-up
+In some training regimes, particularly with very deep neural networks or transformers, it's beneficial to start with a very low learning rate and gradually increase it (warm-up) for the initial few epochs. This helps in stabilizing the training process early on. After the warm-up phase, the learning rate is usually lowered gradually.
+
+New strategy to improve the model's accuracy was to increase the learning rate instead, and involving some dropouts and additional layers to the model. Multiples of training sessions were conducted alongside of tweaking the model architecture, and the following was achieved.
+
+## Fine-tuned Model Training Approach
+### Hyperparameters
+Batch Size: 50
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.01
+
+### Output:
+    Starting epoch 1
 
 
 
 
-
-
-
-
-
-
-  
-  
