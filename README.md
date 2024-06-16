@@ -45,7 +45,7 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
     Epoch 10/10, Loss: 0.3143108763367112
 
 ### Training Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
+![Test & Validation Loss Plot]
 
 ### Validation & Test Output
     Validation Loss: 2.0131, Validation Accuracy: 0.5812
