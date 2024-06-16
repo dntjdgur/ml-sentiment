@@ -75,8 +75,11 @@ Learning Rate: 0.0001
 
     Starting epoch 1
 
-### Test & Validation Plot
+### Training Loss Plot
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
 
+### Test & Validation Loss Plot
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_test_val_loss.png)
     
 ### Result Interpretations & Adjustments
 It was surprising to see how the model accuracy and loss got worse than before. The model outputs directly contradicted to the common practices of improving the model by lowering the learning rate. Although uncommon, such was likely due to the following reasons:
