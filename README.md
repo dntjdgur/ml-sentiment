@@ -73,35 +73,16 @@ Learning Rate: 0.0001
 
 ### Training Output
 
-    Starting epoch 1
-    Batch: 1 Loss: 5.019695281982422
-    Batch: 2 Loss: 4.876773357391357
-    Batch: 3 Loss: 4.745471954345703
-    Batch: 4 Loss: 4.506774425506592
-    Batch: 5 Loss: 4.294400215148926
-    Batch: 6 Loss: 4.083541393280029
-    Batch: 7 Loss: 3.7412188053131104
-    Batch: 8 Loss: 3.4559600353240967
-    Batch: 9 Loss: 2.8894693851470947
-    Batch: 10 Loss: 2.2679431438446045
-    ...
-    Batch: 167 Loss: 0.610465407371521
-    Batch: 168 Loss: 0.4541621506214142
-    Batch: 169 Loss: 0.663360059261322
-    Batch: 170 Loss: 0.7132107615470886
-    Batch: 171 Loss: 0.7810582518577576
-    Epoch 20/20, Loss: 0.5997745501019104
+
 
 ### Training Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
+
 
 ### Test & Validation Output
 
-    Validation Loss: 1.5438, Validation Accuracy: 0.6000
-    Test Loss: 1.6079, Test Accuracy: 0.5826
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_test_val_loss.png)
+
     
 ### Result Interpretations & Adjustments
 It was surprising to see how the model accuracy and loss got worse than before. The model outputs directly contradicted to the common practices of improving the model by lowering the learning rate. Although uncommon, such was likely due to the following reasons:
@@ -130,6 +111,13 @@ Learning Rate: 0.01
 ### Training Output
     Starting epoch 1
 
+### Training Loss Plot
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
 
+### Test & Validation Output
 
+    Validation Loss: 1.5438, Validation Accuracy: 0.6000
+    Test Loss: 1.6079, Test Accuracy: 0.5826
 
+### Test & Validation Loss Plot
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_test_val_loss.png)
