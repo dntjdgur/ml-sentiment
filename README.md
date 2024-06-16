@@ -28,7 +28,7 @@ Training Size: 75%
 Optimizer: Adam
 Learning Rate: 0.001
 
-### Output
+### Training Output
 
     Starting epoch 1
     Processing batch 1
@@ -54,7 +54,7 @@ Learning Rate: 0.001
     Loss: 1.2219252586364746
 
 ### Result Interpretations & Adjustments
-Initially created model was producing poor results. Loss was too high, and further training after the first 5 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
+Initially created model was producing poor results. Loss was too high, and further training after 7 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
 One of the most common way to lower the traning loss is to lower the learning rate, achieving the following model adjustments:
 - Convergence Stability: As training progresses, the model parameters should ideally converge to a set of values that minimize the loss function. A high learning rate can cause the optimizer to overshoot the optimal values, leading to oscillations or even divergence. Lowering the learning rate helps in fine-tuning the parameters, ensuring more stable convergence.
 - Escape Local Minima: In the initial stages of training, a higher learning rate can help in escaping local minima (suboptimal points) and exploring the parameter space more effectively. As training progresses, lowering the learning rate can help in settling into a global or better local minimum.
@@ -71,12 +71,34 @@ Training Size: 75%
 Optimizer: Adam
 Learning Rate: 0.0001
 
-### Output
+### Training Output
 
     Starting epoch 1
+    Batch: 1 Loss: 5.019695281982422
+    Batch: 2 Loss: 4.876773357391357
+    Batch: 3 Loss: 4.745471954345703
+    Batch: 4 Loss: 4.506774425506592
+    Batch: 5 Loss: 4.294400215148926
+    Batch: 6 Loss: 4.083541393280029
+    Batch: 7 Loss: 3.7412188053131104
+    Batch: 8 Loss: 3.4559600353240967
+    Batch: 9 Loss: 2.8894693851470947
+    Batch: 10 Loss: 2.2679431438446045
+    ...
+    Batch: 167 Loss: 0.610465407371521
+    Batch: 168 Loss: 0.4541621506214142
+    Batch: 169 Loss: 0.663360059261322
+    Batch: 170 Loss: 0.7132107615470886
+    Batch: 171 Loss: 0.7810582518577576
+    Epoch 20/20, Loss: 0.5997745501019104
 
 ### Training Loss Plot
 ![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
+
+### Test & Validation Output
+
+    Validation Loss: 1.5438, Validation Accuracy: 0.6000
+    Test Loss: 1.6079, Test Accuracy: 0.5826
 
 ### Test & Validation Loss Plot
 ![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_test_val_loss.png)
@@ -105,7 +127,7 @@ Training Size: 75%
 Optimizer: Adam
 Learning Rate: 0.01
 
-### Output
+### Training Output
     Starting epoch 1
 
 
