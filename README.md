@@ -74,6 +74,9 @@ Learning Rate: 0.0001
 ### Output:
 
     Starting epoch 1
+
+### Test & Validation Plot
+
     
 ### Result Interpretations & Adjustments
 It was surprising to see how the model accuracy and loss got worse than before. The model outputs directly contradicted to the common practices of improving the model by lowering the learning rate. Although uncommon, such was likely due to the following reasons:
