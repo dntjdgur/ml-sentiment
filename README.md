@@ -29,7 +29,6 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
     Learning Rate: 0.001
 
 ### Training Output
-
     Starting epoch 1
     Batch: 1 Loss: 1.666138768196106
     Batch: 2 Loss: 1.7109413146972656
@@ -37,7 +36,23 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
     Batch: 4 Loss: 1.6497366428375244
     Batch: 5 Loss: 1.7631101608276367
     ...
-    
+    Batch: 166 Loss: 0.2060454934835434
+    Batch: 167 Loss: 0.2550095319747925
+    Batch: 168 Loss: 0.3515404760837555
+    Batch: 169 Loss: 0.21221043169498444
+    Batch: 170 Loss: 0.34858688712120056
+    Batch: 171 Loss: 0.44689175486564636
+    Epoch 10/10, Loss: 0.3143108763367112
+
+### Training Loss Plot
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
+
+### Validation & Test Output
+    Validation Loss: 2.0131, Validation Accuracy: 0.5812
+    Test Loss: 1.8693, Test Accuracy: 0.6046
+
+### Test & Validation Loss Plot
+![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_val_test_loss.png)
 
 ### Result Interpretations & Adjustments
 Initially created model was producing poor results. Loss was too high, and further training after 7 epochs was sufficient to recognize the need for changing model parameters. There are various factors causing high loss during the training, but the only way to lower the loss and increase the model accuracy was a consistent trial and error process.
