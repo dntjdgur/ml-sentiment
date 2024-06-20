@@ -64,7 +64,7 @@ One of the most common way to lower the traning loss is to lower the learning ra
 
 ## Tuned Model Training Approach
 ### Hyperparameters
-    Batch Size: 200
+    Batch Size: 50
     Input Dimension: 128
     Output Dimension: 5
     Training Size: 75%
