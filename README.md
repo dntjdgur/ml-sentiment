@@ -64,17 +64,23 @@ One of the most common way to lower the traning loss is to lower the learning ra
 
 ## Tuned Model Training Approach
 ### Hyperparameters
-    Batch Size: 50
+    Batch Size: 200
     Input Dimension: 128
     Output Dimension: 5
     Training Size: 75%
 
 ### Optimizer Parameter
     Optimizer: Adam
-    Learning Rate: 0.0001
+    Learning Rate: 0.001
 
 ### Training Output
-
+    Starting epoch 1
+    Batch: 1 Loss: 1.6897330284118652
+    Batch: 2 Loss: 1.7010935544967651
+    Batch: 3 Loss: 1.6997413635253906
+    Batch: 4 Loss: 1.7000572681427002
+    Batch: 5 Loss: 1.6674854755401611
+    ...
 
 
 ### Training Loss Plot
@@ -87,17 +93,7 @@ One of the most common way to lower the traning loss is to lower the learning ra
 
     
 ### Result Interpretations & Adjustments
-It was surprising to see how the model accuracy and loss got worse than before. The model outputs directly contradicted to the common practices of improving the model by lowering the learning rate. Although uncommon, such was likely due to the following reasons:
-
-1. Stuck in Local Minima or Plateaus: If the training process gets stuck in a local minimum or a plateau (a region where the loss function has very small gradients), increasing the learning rate can help the optimizer to escape these regions. This can allow the model to explore more of the parameter space and potentially find a better path to the global minimum.
-
-2. Adaptive Learning Rate Methods: Some adaptive learning rate algorithms, such as Adam, RMSprop, and Adagrad, adjust the learning rate based on the magnitude of the gradients. In these methods, the effective learning rate can increase in some dimensions while decreasing in others. These adjustments can help improve convergence speed and performance.
-
-3. Cyclic Learning Rates: Cyclic learning rate schedules, such as the one used in Cyclical Learning Rates (CLR) and the One Cycle Policy, involve periodically increasing and then decreasing the learning rate. This technique can sometimes lead to improved performance and faster convergence. The idea is to allow the learning rate to oscillate between a lower and an upper bound, encouraging the optimizer to escape local minima and explore different regions of the loss landscape.
-
-4. Learning Rate Warm-up: In some training regimes, particularly with very deep neural networks or transformers, it's beneficial to start with a very low learning rate and gradually increase it (warm-up) for the initial few epochs. This helps in stabilizing the training process early on. After the warm-up phase, the learning rate is usually lowered gradually.
-
-New strategy to improve the model's accuracy was to increase the learning rate instead, and involving some dropouts and additional layers to the model. Multiples of training sessions were conducted alongside of tweaking the model architecture, and the following was achieved.
+This time, the batch size was increased to 200, training through 100 epochs, and the remaining parameters stayed the same. The reason for this drastic change in the batch size is to observe the changes in the model loss and prediction accuracy, and if the model begin to show improvements, then the changes in the batch size may suffice the tuning procedures. As the training progressed, loss was dramatically decreased down to 0.02 - 0.2 range, which sounded to be a good sign. This, however, could also be the indication of overfitting as the number of samples were reduced down to 1/50 of the entire dataset (total of 560,000 rows). Depending on the validation and test runs, it can be concluded whether the model is indeed working well or overfitting.
 
 ## Fine-tuned Model Training Approach
 ### Hyperparameters
