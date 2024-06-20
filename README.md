@@ -81,19 +81,29 @@ One of the most common way to lower the traning loss is to lower the learning ra
     Batch: 4 Loss: 1.7000572681427002
     Batch: 5 Loss: 1.6674854755401611
     ...
-
+    Batch: 210 Loss: 0.10914823412895203
+    Batch: 211 Loss: 0.12155231833457947
+    Batch: 212 Loss: 0.09095839411020279
+    Batch: 213 Loss: 0.09806714206933975
+    Batch: 214 Loss: 0.0602705255150795
+    Epoch 25/25, Loss: 0.10540465810379693
 
 ### Training Loss Plot
-
+![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_training_loss.png)
 
 ### Test & Validation Output
-
+    Validation Loss: 2.6043, Validation Accuracy: 0.6079
+    Test Loss: 2.5778, Test Accuracy: 0.6104
 
 ### Test & Validation Loss Plot
-
+![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_val_test_loss.png)
     
 ### Result Interpretations & Adjustments
 This time, the batch size was increased to 200, training through 100 epochs, and the remaining parameters stayed the same. The reason for this drastic change in the batch size is to observe the changes in the model loss and prediction accuracy, and if the model begin to show improvements, then the changes in the batch size may suffice the tuning procedures. As the training progressed, loss was dramatically decreased down to 0.02 - 0.2 range, which sounded to be a good sign. This, however, could also be the indication of overfitting as the number of samples were reduced down to 1/50 of the entire dataset (total of 560,000 rows). Depending on the validation and test runs, it can be concluded whether the model is indeed working well or overfitting.
+
+Total of 25 epochs, training resulted in a relatively acceptable loss rate. However, the validation and test indicate that the accuracy did not get any better. This would be an indication that the model was overfitting after some trials, and could mean that the model needs further adjustments.
+
+What seems obvious is that better and more meticulous preprocessing is required. Currently the model analyzes the correlations between the scores and the tokenized words in the review summary, and are mostly concerned with adjectives. But the result of the validation and testing may indicate that adverbs and nouns should also be considered in the analysis as solely performing the analysis on the adjectives can't be enough.
 
 ## Fine-tuned Model Training Approach
 ### Hyperparameters
