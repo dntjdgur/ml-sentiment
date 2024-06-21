@@ -105,6 +105,19 @@ Total of 25 epochs, training resulted in a relatively acceptable loss rate. Howe
 
 What seems obvious is that better and more meticulous preprocessing is required. Currently the model analyzes the correlations between the scores and the tokenized words in the review summary, and are mostly concerned with adjectives. But the result of the validation and testing may indicate that adverbs and nouns should also be considered in the analysis as solely performing the analysis on the adjectives can't be enough.
 
+### Fine Tuning Insights
+1. Data preprocessing will now involve the following POS Tags:
+   - JJ: Adjective or numeral, ordinal
+   - JJR: Adjecttive, comparative
+   - JJS: Adjective, superlative
+   - RB: Adverb
+   - RBR: Adverb, comparative
+   - RBS: Adverb, superlative
+   - VB: Verb
+   - VBD: Verb, past tense
+2. The total data length is increased to 1/10 of entire dataset, consisted of total 56850 rows. Batch size is increased to 200, and epoch is set to 25.
+3. Fine tuning process will continue until a stable loss is observed from both validation and test.
+
 ## Fine-tuned Model Training Approach
 ### Hyperparameters
 Batch Size: 50
