@@ -115,7 +115,8 @@ What seems obvious is that better and more meticulous preprocessing is required.
    - RBS: Adverb, superlative
    - VB: Verb
    - VBD: Verb, past tense
-  
+2. The total data length is increased to 1/10 of entire dataset, consisted of total 56850 rows. Batch size is increased to 200, and epoch is set to 25.
+3. Fine tuning process will continue until a stable loss is observed from both validation and test.
 
 ## Fine-tuned Model Training Approach
 ### Hyperparameters
