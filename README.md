@@ -117,6 +117,7 @@ What seems obvious is that better and more meticulous preprocessing is required.
    - VBD: Verb, past tense
 2. The total data length is increased to 1/10 of entire dataset, consisted of total 56850 rows. Batch size is increased to 200, and epoch is set to 25.
 3. Fine tuning process will continue until a stable loss is observed from both validation and test.
+4. [After 3rd trial of training failures] There was a notifiable overhead in training process; that the model training suddenly fails after 39 epochs. The row size was increased to 1/5, and batch size was increased to 500 in the hopes of increasing the model accuracy. This, however, was not leading to any results for 3 days worth of training. Thus, the row size was decreased down to 1/7, and batch size was decreased to 300.
 
 ## Fine-tuned Model Training Approach
 ### Hyperparameters
