@@ -123,6 +123,7 @@ What seems obvious is that better and more meticulous preprocessing is required.
 7. [After a 5th successful training session - Continued] Batch size was also reduced down to mini batches. Batch sizes are determined incrementally in 2' exponential digits (32, 64, 128, ...).
 8. [After a 6th successful training session] With the 5th tuning process, the model achieved 78% accuracy in test and validation. The training showed maximum 0.48 loss, which wasn't as great as the other trainings, the validation and test were more stabilized and better this time.
 9. [After a 6th successful training session - Continued] Rest remaining the same, embedding dimensions have been modified from 100 to 256, multiply of 2. In the process of fine tuning an LSTM model, it is crucial to look into the hyperparameters along with preprocessing. Since sufficient number of data is obtained and current test and validations prove that the model is getting closer to the fine tuned state, an embedding dimension was tweaked to verify if the model can further be improved.
+10. [After a 7th successful training session] Training, validation and test were completed, however, the output was too large and could not open the file. Due to the memory limitations, another training session is being conducted based on the same configuration.
 
 ## Fine-tuned Model Training Approach
 ### Hyperparameters
