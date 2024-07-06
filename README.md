@@ -149,7 +149,7 @@ Learning Rate: 0.01
     Test Loss: 1.6079, Test Accuracy: 0.5826
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_test_validation_loss.png)
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_val_test_loss.png)
 
 ## Main Strategies in Fine-Tuning the Model
 ### Mini Batches
