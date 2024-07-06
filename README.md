@@ -128,7 +128,7 @@ What seems obvious is that better and more meticulous preprocessing is required.
 
 ## DRAFT - Fine-tuned Model Training Approach
 ### Hyperparameters
-Batch Size: 50
+Batch Size: 64
 Input Dimension: 128
 Output Dimension: 5
 Training Size: 75%
@@ -164,6 +164,43 @@ Learning Rate: 0.01
 ### Fine Tuning Insights - DRAFT
 1. Model Accuracy Improvements: Model clearly improved from various changes made to the hyperparameters, dropout rates, batch sizes, data sizes, and so on. While the initial model attempts continuously showed an overfitting problems during the training, the latest training showed no signs of overfitting. Test and validation sessions proved so by indicating some consistent predictions made, although the loss remained as high as 0.9.
 2. Training speed Improvements: Compared to those of the previous, training took significantly less time and memory. It is possible that the sagemaker instance has impacted on the training improvements as the instance changed from ml.t3.2xlarge to ml.g4dn.2xlarge, but it can also be seen due to the hyperparameter tunings. Initial model composition was purely out of random, since the model's fundamental performance issue was not observed. To find out what's best for the model, it is crucial to keep on running the simulations.
+
+## FINAL - Fine-tuned Model Training Approach
+### Hyperparameters
+Batch Size: 
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.01
+
+### Training Output
+    Epoch 1/64, Loss: 0.8872167890654998
+    Epoch 2/64, Loss: 0.7778417193785607
+    Epoch 3/64, Loss: 0.7108412338685492
+    Epoch 4/64, Loss: 0.6571226177955727
+    Epoch 5/64, Loss: 0.6123954734180197
+    ...
+    Epoch 60/64, Loss: 0.24374225723501866
+    Epoch 61/64, Loss: 0.24262352172015855
+    Epoch 62/64, Loss: 0.24084377555554598
+    Epoch 63/64, Loss: 0.24098724660917367
+    Epoch 64/64, Loss: 0.23738432873974644
+
+### Training Loss Plot
+![Test & Validation Loss Plot]
+
+### Test & Validation Output
+
+    Validation Loss: 0.9283, Validation Accuracy: 0.7797
+    Test Loss: 0.9306, Test Accuracy: 0.7814
+
+### Test & Validation Loss Plot
+![Test & Validation Loss Plot]
+
+### Fine Tuning Insights - FINAL
 
 ## Main Strategies in Fine-Tuning the Model
 ### Mini Batches
