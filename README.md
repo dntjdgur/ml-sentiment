@@ -150,3 +150,14 @@ Learning Rate: 0.01
 
 ### Test & Validation Loss Plot
 ![Test & Validation Loss Plot]
+
+### Main Strategies in Fine-Tuning the Model
+#### Mini Batches
+
+#### Dropouts
+
+#### Bidirectional LSTM
+
+#### Attention Mechanisms
+
+#### Pre-trained Embeddings
