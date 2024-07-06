@@ -126,7 +126,7 @@ What seems obvious is that better and more meticulous preprocessing is required.
 10. [After a 7th successful training session] Training, validation and test were completed, however, the output was too large and could not open the file. Due to the memory limitations, another training session is being conducted based on the same configuration.
 11. [After an 8th successful training session] Training session indicated 0.17 loss but the training was unexpectedly interrupted. A new training is being conducted with ml.g4dn.4xlarge, further expedited from 2xlarge. Approximately 0.8 accuracy is expected from this session. Once the accuracy hits 0.8, we can carefully end the training and use it for the predictions.
 
-## Fine-tuned Model Training Approach
+## DRAFT - Fine-tuned Model Training Approach
 ### Hyperparameters
 Batch Size: 50
 Input Dimension: 128
@@ -141,7 +141,7 @@ Learning Rate: 0.01
     Starting epoch 1
 
 ### Training Loss Plot
-![Test & Validation Loss Plot]
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_training_loss.png)
 
 ### Test & Validation Output
 
@@ -149,7 +149,7 @@ Learning Rate: 0.01
     Test Loss: 1.6079, Test Accuracy: 0.5826
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot]
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_test_validation_loss.png)
 
 ## Main Strategies in Fine-Tuning the Model
 ### Mini Batches
