@@ -151,13 +151,25 @@ Learning Rate: 0.01
 ### Test & Validation Loss Plot
 ![Test & Validation Loss Plot]
 
-### Main Strategies in Fine-Tuning the Model
-#### Mini Batches
+## Main Strategies in Fine-Tuning the Model
+### Mini Batches
+1. Work Definition: Mini batches are subsets of the training data that are fed to the model in each iteration. Mini batches allow to parallelize the computation and update the model computation and update the model parameters more frequently. If the batch sizes are either too small or too large, a convergence and accuracy can be affected.
+2. Model Application: 
 
-#### Dropouts
+### Dropouts
+1. Work Definition: Dropout is a regularization technique that randomly drops out some units or connections in the network udring training. Dropout forces the model to learn from different subsets of the data and reduces the co-dependency of the units. If the dropout rates are either too small or high, it can harm the model's performance. Common dropout rate is 0.2 - 0.5 for the input and output layers, and 0.1 - 0.2 for recurrent layers.
+2. Model Application: 
 
-#### Bidirectional LSTM
+### Bidirectional LSTM
+1. Work Definition: Bidirectional LSTMs are composed of two LSTMs that process the input sequence from both directions: forward and backward. They can capture more contextual information and dependencies from the data, as they have access to both the past and the future states.
+2. Model Application:
 
-#### Attention Mechanisms
+### Attention Mechanisms
+1. Work Definition: Attention mechanisms are modules that allow the models to focus on the most relevant parts of the input sequences for each output step. These mechanisms help the model to deal with long or complex sequences, as they reduce the burden on the memory and increase the interpretability of the model.
+2. Model Application:
+   
+### Pre-trained Embeddings
+1. Work Definition: Pre-trained embeddings are vectors that represent the meaning and contexts of words or tokens in a high dimensional space. They can help the models learn from existing knowledge and reduce the vocabulary size and the dimensionality of the input layer, by capturing semantic information from vast text data.
+2. Model Application:
 
-#### Pre-trained Embeddings
+   
