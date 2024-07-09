@@ -177,25 +177,25 @@ Optimizer: Adam
 Learning Rate: 0.01
 
 ### Training Output
-    Epoch 1/64, Loss: 0.8872167890654998
-    Epoch 2/64, Loss: 0.7778417193785607
-    Epoch 3/64, Loss: 0.7108412338685492
-    Epoch 4/64, Loss: 0.6571226177955727
-    Epoch 5/64, Loss: 0.6123954734180197
+    Epoch 1/128, Loss: 1.0108394085807328
+    Epoch 2/128, Loss: 0.8688129498325802
+    Epoch 3/128, Loss: 0.8343567836294703
+    Epoch 4/128, Loss: 0.8092893086082326
+    Epoch 5/128, Loss: 0.7870148113335551
     ...
-    Epoch 60/64, Loss: 0.24374225723501866
-    Epoch 61/64, Loss: 0.24262352172015855
-    Epoch 62/64, Loss: 0.24084377555554598
-    Epoch 63/64, Loss: 0.24098724660917367
-    Epoch 64/64, Loss: 0.23738432873974644
+    Epoch 124/128, Loss: 0.15668813220668001
+    Epoch 125/128, Loss: 0.155675094374428
+    Epoch 126/128, Loss: 0.15323984313021236
+    Epoch 127/128, Loss: 0.15266659068006078
+    Epoch 128/128, Loss: 0.1523080790410688
 
 ### Training Loss Plot
 ![Test & Validation Loss Plot]
 
 ### Test & Validation Output
 
-    Validation Loss: 0.9283, Validation Accuracy: 0.7797
-    Test Loss: 0.9306, Test Accuracy: 0.7814
+    Validation Loss: 1.0653, Validation Accuracy: 0.7852
+    Test Loss: 1.0600, Test Accuracy: 0.7870
 
 ### Test & Validation Loss Plot
 ![Test & Validation Loss Plot]
@@ -205,22 +205,23 @@ Learning Rate: 0.01
 ## Main Strategies in Fine-Tuning the Model
 ### Mini Batches
 1. Work Definition: Mini batches are subsets of the training data that are fed to the model in each iteration. Mini batches allow to parallelize the computation and update the model computation and update the model parameters more frequently. If the batch sizes are either too small or too large, a convergence and accuracy can be affected.
-2. Model Application: 
+2. Model Application: Batch sizes were configured to 128, multiply of 2. It was previously 256 which extended the training and was not effective in fine tuning the model. Batch size of 64, on the other hand, wasn't proving much betterment in the model accuracy, so 128 was determined to be the most optimal size.
 
 ### Dropouts
 1. Work Definition: Dropout is a regularization technique that randomly drops out some units or connections in the network udring training. Dropout forces the model to learn from different subsets of the data and reduces the co-dependency of the units. If the dropout rates are either too small or high, it can harm the model's performance. Common dropout rate is 0.2 - 0.5 for the input and output layers, and 0.1 - 0.2 for recurrent layers.
-2. Model Application: 
+2. Model Application: Draft model was configured to have a single 0.5 dropout rate, only applied to the features. Although this drastically increased the accuracy of the training, it also resulted in significantly higher variance in the loss values. In the final model configuration, both feature and the lstm dropouts were configured to apply more sophistication in the model configuration. 
 
 ### Bidirectional LSTM
 1. Work Definition: Bidirectional LSTMs are composed of two LSTMs that process the input sequence from both directions: forward and backward. They can capture more contextual information and dependencies from the data, as they have access to both the past and the future states.
-2. Model Application:
+2. Model Application: The model was already acquired with bidirectional LSTM layer, which was necessary to capture more contextual information and to learn from each neuron in the front and back. 
 
 ### Attention Mechanisms
 1. Work Definition: Attention mechanisms are modules that allow the models to focus on the most relevant parts of the input sequences for each output step. These mechanisms help the model to deal with long or complex sequences, as they reduce the burden on the memory and increase the interpretability of the model.
-2. Model Application:
+2. Model Application: The preprocessing stage involved in highlighting specific tokens in the review texts, to make the model focus on specific features and analyze the patterns. 
    
 ### Pre-trained Embeddings
 1. Work Definition: Pre-trained embeddings are vectors that represent the meaning and contexts of words or tokens in a high dimensional space. They can help the models learn from existing knowledge and reduce the vocabulary size and the dimensionality of the input layer, by capturing semantic information from vast text data.
 2. Model Application:
+
 
    
