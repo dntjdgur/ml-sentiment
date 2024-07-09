@@ -151,7 +151,7 @@ Learning Rate: 0.01
     Epoch 64/64, Loss: 0.23738432873974644
 
 ### Training Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_training_loss.png)
+![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_training_loss.png)
 
 ### Test & Validation Output
 
@@ -190,7 +190,7 @@ Learning Rate: 0.01
     Epoch 128/128, Loss: 0.1523080790410688
 
 ### Training Loss Plot
-![Test & Validation Loss Plot]
+![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
 
 ### Test & Validation Output
 
@@ -198,7 +198,7 @@ Learning Rate: 0.01
     Test Loss: 1.0600, Test Accuracy: 0.7870
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot]
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
 
 ### Fine Tuning Insights - FINAL
 
