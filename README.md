@@ -260,3 +260,32 @@ Training has consistently failed during the validation and tests. Training showe
 The training was completed and the loss was remarkably reduced, as well as the accuracy. The model accuracy reached up to 0.8, and the training was indicating much more consistently low loss. The learning rate did indeed affect the model's training efficiency, and to achieve better fine-tuned model, last tuning is currently underway. Batch was doubled and epoch was also doubled in the final attempt.
 Final attempt has failed. If the epoch reaches to 256, the training stops and the log shows no reasons in particular. Since there is no way of avoiding this incident, training for final tuning will stay as 128.
 Due to the kernel errors in the AWS Sagemaker, training is keep getting interrupted and the model build failure occurs. Epoch numbers could be the main cause of sudden training failure, but the logs do not state exactly what's causing the training to stop. Training is undergoing with less hidden dimensions to avoid potential lack of memory in the kernel.
+The best I could do was to achieve 0.7 accuracy in the validation and test dataset, with over 1.21 loss. Due to the technical difficulties, the training could not be improved.
+The images of the training and test, validations are shown as below:
+
+## FINAL_IMPROVED - Fine-tuned Model Training Approach
+### Hyperparameters
+Batch Size: 
+Input Dimension: 128
+Output Dimension: 5
+Training Size: 75%
+
+### Optimizer Parameter
+Optimizer: Adam
+Learning Rate: 0.001
+
+### Training Output
+
+    ...
+
+
+### Training Loss Plot
+![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
+
+### Test & Validation Output
+
+    Validation Loss: 1.0653, Validation Accuracy: 0.7852
+    Test Loss: 1.0600, Test Accuracy: 0.7870
+
+### Test & Validation Loss Plot
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
