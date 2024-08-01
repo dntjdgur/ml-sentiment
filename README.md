@@ -262,8 +262,6 @@ Learning Rate: 0.01
 5. Due to the kernel errors in the AWS Sagemaker, training is keep getting interrupted and the model build failure occurs. Epoch numbers could be the main cause of sudden training failure, but the logs do not state exactly what's causing the training to stop. Training is undergoing with less hidden dimensions to avoid potential lack of memory in the kernel.
 6. The best I could do was to achieve 0.7 accuracy in the validation and test dataset, with over 1.21 loss. Due to the technical difficulties, the training could not be improved.
 
-The images of the training and test, validations are shown as below:
-
 ## FINAL_IMPROVED - Fine-tuned Model Training Approach
 ### Hyperparameters
 Batch Size: 
