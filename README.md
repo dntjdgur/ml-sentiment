@@ -298,3 +298,9 @@ Learning Rate: 0.001
 
 ### Test & Validation Loss Plot
 ![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/final_tuned_val_test_loss.png)
+
+### Interpretation
+    Final output indicates that the model is successful in correctly predicting the sentiment level of the individuals in the reviews for approximately 78% of the time. The training loss was drastically decreased down to 0.1265, which is a significant improvement in the model's accuracy. The model's major problem with overfitting was not detected in the validation and test. Although this is not the most confident model configuration in the sentiment analysis, it's a noticeable achievement.
+
+### Conclusion
+    ...
