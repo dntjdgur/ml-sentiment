@@ -265,7 +265,7 @@ Learning Rate: 0.01
 ## FINAL_IMPROVED - Fine-tuned Model Training Approach
 ### Hyperparameters
 Batch Size: 
-Input Dimension: 128
+Input Dimension: 256
 Output Dimension: 5
 Training Size: 75%
 
@@ -274,17 +274,27 @@ Optimizer: Adam
 Learning Rate: 0.001
 
 ### Training Output
-
+    Epoch 1/128, Loss: 0.8992044556389113
+    Epoch 2/128, Loss: 0.788468066835645Epoch 3/128, Loss: 0.7259628071366365
+    Epoch 4/128, Loss: 0.670280088282195Epoch 5/128, Loss: 0.6232243021284521
+    Epoch 6/128, Loss: 0.584648031881839Epoch 7/128, Loss: 0.5507390474125986
+    Epoch 8/128, Loss: 0.5226299771782248Epoch 9/128, Loss: 0.4968269845207689
+    Epoch 10/128, Loss: 0.4754923843539157
     ...
-
+    Epoch 119/128, Loss: 0.1311807496516169
+    Epoch 120/128, Loss: 0.1294150768591067Epoch 121/128, Loss: 0.1303831878577851
+    Epoch 122/128, Loss: 0.12850490618721447Epoch 123/128, Loss: 0.12958939662585783
+    Epoch 124/128, Loss: 0.12803827632862191Epoch 125/128, Loss: 0.12799541387008895
+    Epoch 126/128, Loss: 0.12743956072818852Epoch 127/128, Loss: 0.12676779883056796
+    Epoch 128/128, Loss: 0.1265069439768221
 
 ### Training Loss Plot
 ![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
 
 ### Test & Validation Output
 
-    Validation Loss: 1.0653, Validation Accuracy: 0.7852
-    Test Loss: 1.0600, Test Accuracy: 0.7870
+    Validation Loss: 1.1329, Validation Accuracy: 0.7819
+    Test Loss: 1.1323, Test Accuracy: 0.7832
 
 ### Test & Validation Loss Plot
 ![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
