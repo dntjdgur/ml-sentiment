@@ -274,22 +274,12 @@ Optimizer: Adam
 Learning Rate: 0.001
 
 ### Training Output
-    Epoch 1/128, Loss: 0.8992044556389113
-    Epoch 2/128, Loss: 0.788468066835645Epoch 3/128, Loss: 0.7259628071366365
-    Epoch 4/128, Loss: 0.670280088282195Epoch 5/128, Loss: 0.6232243021284521
-    Epoch 6/128, Loss: 0.584648031881839Epoch 7/128, Loss: 0.5507390474125986
-    Epoch 8/128, Loss: 0.5226299771782248Epoch 9/128, Loss: 0.4968269845207689
-    Epoch 10/128, Loss: 0.4754923843539157
+
     ...
-    Epoch 119/128, Loss: 0.1311807496516169
-    Epoch 120/128, Loss: 0.1294150768591067Epoch 121/128, Loss: 0.1303831878577851
-    Epoch 122/128, Loss: 0.12850490618721447Epoch 123/128, Loss: 0.12958939662585783
-    Epoch 124/128, Loss: 0.12803827632862191Epoch 125/128, Loss: 0.12799541387008895
-    Epoch 126/128, Loss: 0.12743956072818852Epoch 127/128, Loss: 0.12676779883056796
-    Epoch 128/128, Loss: 0.1265069439768221
+
 
 ### Training Loss Plot
-![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/final_tuned_training_loss.png)
+    ...
 
 ### Test & Validation Output
 
@@ -297,10 +287,11 @@ Learning Rate: 0.001
     Test Loss: 1.1323, Test Accuracy: 0.7832
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/final_tuned_val_test_loss.png)
+    ...
 
 ### Interpretation
     Final output indicates that the model is successful in correctly predicting the sentiment level of the individuals in the reviews for approximately 78% of the time. The training loss was drastically decreased down to 0.1265, which is a significant improvement in the model's accuracy. The model's major problem with overfitting was not detected in the validation and test. Although this is not the most confident model configuration in the sentiment analysis, it's a noticeable achievement.
+    UPDATED [2024-08-06]: Sagemaker required an increase in the computing hour limits, which was set to 48 hours, in order to complete the training. Turned out that the model required more than 48 hours to train; thus, limit was increased and further training is being conducted. Next update will be available on 2024-08-09 when the training is completed.
 
 ### Conclusion
     ...
