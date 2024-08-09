@@ -292,6 +292,7 @@ Learning Rate: 0.001
 ### Interpretation
 Final output indicates that the model is successful in correctly predicting the sentiment level of the individuals in the reviews for approximately 78% of the time. The training loss was drastically decreased down to 0.1265, which is a significant improvement in the model's accuracy. The model's major problem with overfitting was not detected in the validation and test. Although this is not the most confident model configuration in the sentiment analysis, it's a noticeable achievement.
 UPDATED [2024-08-06]: Sagemaker required an increase in the computing hour limits, which was set to 48 hours, in order to complete the training. Turned out that the model required more than 48 hours to train; thus, limit was increased and further training is being conducted. Next update will be available on 2024-08-09 when the training is completed.
+UPDATED [2024-08-08]: Currently the training is approximately 80% completed, and the remaining epochs are expected to be finished within the next 12 hours. Loss is as low as 0.126525 as of today, and is showing a promising result. However, if the model exhibits no better results than the previous trainings, the model should be further improved.
 
 ### Conclusion
     ...
