@@ -295,6 +295,7 @@ UPDATED [2024-08-06]: Sagemaker required an increase in the computing hour limit
 UPDATED [2024-08-08]: Currently the training is approximately 80% completed, and the remaining epochs are expected to be finished within the next 12 hours. Loss is as low as 0.126525 as of today, and is showing a promising result. However, if the model exhibits no better results than the previous trainings, the model should be further improved.
 UPDATED [2024-08-10]: Unfortunately, significant improvements were not found. The loss function revealed that the accuracy had increased up to 0.8 from the test and validation, but the training shows that the loss has gotten to as low as 0.16, which is actually worse than the previous configurations. New training is undergoing with doubled epoch, doubled dimensions for both embedding and hidden. Next update will be available after 48 hours.
 UPDATED [2024-08-12]: Unfortunately, the training has ended due to the timeout. Since the epochs and dimensions were doubled, the amount of time required for the training also doubled. Timeout setting was not sufficient to finish the training, so the new training is undergoing. Next update will become available on 2024-08-15 once the training completes.
+UPDATED [2024-08-17]: Training has been aborted due to the timeout. Epoch 512 was attempted but was too much for the training job. New training job is undergoing with epoch 128 to see if there is any improvement after adjusting the dimension hyperparameter. Next update is on Monday.
 
 ### Conclusion
     ...
