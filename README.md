@@ -45,14 +45,14 @@ LSTM (Long Short-Term Memory) model is a type of RNN that is more complex in its
     Epoch 10/10, Loss: 0.3143108763367112
 
 ### Training Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_training_loss.png)
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/init_training_loss.png)
 
 ### Validation & Test Output
     Validation Loss: 2.0131, Validation Accuracy: 0.5812
     Test Loss: 1.8693, Test Accuracy: 0.6046
 
 ### Test & Validation Loss Plot
-![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/init_val_test_loss.png)
+![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/init_val_test_loss.png)
 
 ### Result Interpretations & Adjustments
 Initial model output indicated a good start in the analysis. Loss was somewhere in between 0.2 to 0.4 range, and gradually decreased over several epochs in the training.
@@ -89,14 +89,14 @@ One of the most common way to lower the traning loss is to lower the learning ra
     Epoch 25/25, Loss: 0.10540465810379693
 
 ### Training Loss Plot
-![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_training_loss.png)
+![Training Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_training_loss.png)
 
 ### Test & Validation Output
     Validation Loss: 2.6043, Validation Accuracy: 0.6079
     Test Loss: 2.5778, Test Accuracy: 0.6104
 
 ### Test & Validation Loss Plot
-![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_val_test_loss.png)
+![Validation & Test Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_val_test_loss.png)
     
 ### Result Interpretations & Adjustments
 This time, the batch size was increased to 200, training through 100 epochs, and the remaining parameters stayed the same. The reason for this drastic change in the batch size is to observe the changes in the model loss and prediction accuracy, and if the model begin to show improvements, then the changes in the batch size may suffice the tuning procedures. As the training progressed, loss was dramatically decreased down to 0.02 - 0.2 range, which sounded to be a good sign. This, however, could also be the indication of overfitting as the number of samples were reduced down to 1/50 of the entire dataset (total of 560,000 rows). Depending on the validation and test runs, it can be concluded whether the model is indeed working well or overfitting.
@@ -151,7 +151,7 @@ Learning Rate: 0.01
     Epoch 64/64, Loss: 0.23738432873974644
 
 ### Training Loss Plot
-![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_training_loss.png)
+![Training Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_6_training_loss.png)
 
 ### Test & Validation Output
 
@@ -159,7 +159,7 @@ Learning Rate: 0.01
     Test Loss: 0.9306, Test Accuracy: 0.7814
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_6_val_test_loss.png)
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_6_val_test_loss.png)
 
 ### Fine Tuning Insights - DRAFT
 1. Model Accuracy Improvements: Model clearly improved from various changes made to the hyperparameters, dropout rates, batch sizes, data sizes, and so on. While the initial model attempts continuously showed an overfitting problems during the training, the latest training showed no signs of overfitting. Test and validation sessions proved so by indicating some consistent predictions made, although the loss remained as high as 0.9.
@@ -190,7 +190,7 @@ Learning Rate: 0.01
     Epoch 128/128, Loss: 0.1523080790410688
 
 ### Training Loss Plot
-![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
+![Training Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_7_training_loss.png)
 
 ### Test & Validation Output
 
@@ -198,7 +198,7 @@ Learning Rate: 0.01
     Test Loss: 1.0600, Test Accuracy: 0.7870
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_7_val_test_loss.png)
 
 ### Fine Tuning Insights - IMPROVED
 
@@ -244,7 +244,7 @@ Learning Rate: 0.01
     Epoch 128/128, Loss: 0.1523080790410688
 
 ### Training Loss Plot
-![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
+![Training Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_7_training_loss.png)
 
 ### Test & Validation Output
 
@@ -252,7 +252,7 @@ Learning Rate: 0.01
     Test Loss: 1.0600, Test Accuracy: 0.7870
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/tuned_7_val_test_loss.png)
 
 ### Fine Tuning Insights - IMPROVED
 1. Final version of the model was crafted over numerous alterations in the model configurations. As the improved version of the model indicates, the model was underfitting too much and could not be considered to be a good model to make predictions. The model involved in sophisticated parameters, and yet the validation and test epochs show a significantly high loss values. Training was done fairly well, so the model configuration may have worked well.
@@ -290,7 +290,7 @@ Learning Rate: 0.001
     Epoch 256/256, Loss: 0.16466003700214274
 
 ### Training Loss Plot
-![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
+![Training Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/final_finalized_training_loss.png)
 
 ### Test & Validation Output
 
@@ -298,7 +298,7 @@ Learning Rate: 0.001
     Test Loss: 1.0845, Test Accuracy: 0.7783
 
 ### Test & Validation Loss Plot
-![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-sentiment/blob/main/images/final_finalized_val_test_loss.png)
 
 ### Interpretation
 Final output indicates that the model is successful in correctly predicting the sentiment level of the individuals in the reviews for approximately 78% of the time. The training loss was drastically decreased down to 0.1265, which is a significant improvement in the model's accuracy. The model's major problem with overfitting was not detected in the validation and test. Although this is not the most confident model configuration in the sentiment analysis, it's a noticeable achievement.
