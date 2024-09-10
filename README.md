@@ -265,7 +265,7 @@ Learning Rate: 0.01
 ## FINAL_IMPROVED - Fine-tuned Model Training Approach
 ### Hyperparameters
 Batch Size: 
-Input Dimension: 256
+Input Dimension: 128
 Output Dimension: 5
 Training Size: 75%
 
@@ -274,28 +274,50 @@ Optimizer: Adam
 Learning Rate: 0.001
 
 ### Training Output
-
+    Epoch 1/256, Loss: 0.8872167890654998
+    Epoch 2/256, Loss: 0.7778417193785607Epoch 3/256, Loss: 0.7108412338685492
+    Epoch 4/256, Loss: 0.6571226177955727Epoch 5/256, Loss: 0.6123954734180197
+    Epoch 6/256, Loss: 0.5778302836008821Epoch 7/256, Loss: 0.5478400183401744
+    Epoch 8/256, Loss: 0.5243852170057911Epoch 9/256, Loss: 0.5018113445151936
+    Epoch 10/256, Loss: 0.48370821892695126
     ...
-
+    Epoch 245/256, Loss: 0.16720004096342045
+    Epoch 246/256, Loss: 0.16610032831476737Epoch 247/256, Loss: 0.16631394115772308
+    Epoch 248/256, Loss: 0.16679641665026332Epoch 249/256, Loss: 0.1655245944794688
+    Epoch 250/256, Loss: 0.1658941954898559Epoch 251/256, Loss: 0.1658671052773637
+    Epoch 252/256, Loss: 0.16586205604531515Epoch 253/256, Loss: 0.16643320461549022
+    Epoch 254/256, Loss: 0.16573829545128055Epoch 255/256, Loss: 0.16559608364642892
+    Epoch 256/256, Loss: 0.16466003700214274
 
 ### Training Loss Plot
-    ...
+![Training Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_training_loss.png)
 
 ### Test & Validation Output
 
-    Validation Loss: 1.1329, Validation Accuracy: 0.7819
-    Test Loss: 1.1323, Test Accuracy: 0.7832
+    Validation Loss: 1.0869, Validation Accuracy: 0.7764
+    Test Loss: 1.0845, Test Accuracy: 0.7783
 
 ### Test & Validation Loss Plot
-    ...
+![Test & Validation Loss Plot](https://github.com/dntjdgur/ml-nlp/blob/main/images/tuned_7_val_test_loss.png)
 
 ### Interpretation
 Final output indicates that the model is successful in correctly predicting the sentiment level of the individuals in the reviews for approximately 78% of the time. The training loss was drastically decreased down to 0.1265, which is a significant improvement in the model's accuracy. The model's major problem with overfitting was not detected in the validation and test. Although this is not the most confident model configuration in the sentiment analysis, it's a noticeable achievement.
+
 UPDATED [2024-08-06]: Sagemaker required an increase in the computing hour limits, which was set to 48 hours, in order to complete the training. Turned out that the model required more than 48 hours to train; thus, limit was increased and further training is being conducted. Next update will be available on 2024-08-09 when the training is completed.
+
 UPDATED [2024-08-08]: Currently the training is approximately 80% completed, and the remaining epochs are expected to be finished within the next 12 hours. Loss is as low as 0.126525 as of today, and is showing a promising result. However, if the model exhibits no better results than the previous trainings, the model should be further improved.
+
 UPDATED [2024-08-10]: Unfortunately, significant improvements were not found. The loss function revealed that the accuracy had increased up to 0.8 from the test and validation, but the training shows that the loss has gotten to as low as 0.16, which is actually worse than the previous configurations. New training is undergoing with doubled epoch, doubled dimensions for both embedding and hidden. Next update will be available after 48 hours.
+
 UPDATED [2024-08-12]: Unfortunately, the training has ended due to the timeout. Since the epochs and dimensions were doubled, the amount of time required for the training also doubled. Timeout setting was not sufficient to finish the training, so the new training is undergoing. Next update will become available on 2024-08-15 once the training completes.
+
 UPDATED [2024-08-17]: Training has been aborted due to the timeout. Epoch 512 was attempted but was too much for the training job. New training job is undergoing with epoch 128 to see if there is any improvement after adjusting the dimension hyperparameter. Next update is on Monday.
 
+FINAL UPDATE [2024-09-10]: Training was finally completed when the embedding dimensions were significantly reduced. It was impossible to conduct a training without using better GPU and increasing the timeout settings. With current configurations, this is the best result that could be obtained. There is not much change in the test accuracy compared to the previous attempts. However, there is a noticeable improvement in the loss values, indicating that the model was better accurate at predicting the sentiment level of the texts with the current settings.
+
 ### Conclusion
-    ...
+Model training was especially difficult when the machine configurations were not adequate to the machine learnings. A significant realization obtained from this study was that the machine learning not only heavily relies on the efficiency and accuracy of the code, but also the capabilities of the hardware components. Without having equipped with highly qualified machine for the training, it is not easy to locate an applicable hardware.
+
+It was also difficult to exactly pinpoint what model configurations are the best form as possible. Figuring out the most effective shape of the model required numerous trainings, testing and validation processes, and visualizing the output was the fundamental necessity to determine the effectiveness of the model. Also, a high accuracy wouldn't necessarily mean that the model is at its best performance. Some trials in the training indicated a high test accuracy, as high as 0.9 - 0.95 range, but were not the best results because it could mean that the model is overfitting to the dataset. To some extent, the model needed to earn human's approval in its trustworthiness to which I am not quite sure of what standard it bases on.
+
+Next study will be based on the Natural Language Processing - Text Classification, which will utilize the concepts of subject study. 
